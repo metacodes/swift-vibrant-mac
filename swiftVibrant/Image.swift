@@ -1,18 +1,16 @@
 //
 //  Image.swift
-//  swift-vibrant-ios
 //
-//  Created by Bryce Dougherty on 5/3/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
 import Foundation
-import UIKit
+import AppKit
 
 public class Image {
-    var image: UIImage
+    var image: NSImage
     
-    init(image: UIImage) {
+    init(image: NSImage) {
         self.image = image
     }
     
@@ -65,28 +63,21 @@ public class Image {
         self.image = Image.scaleImage(image: self.image, by: scale)
     }
     
-    private static func scaleImage(image: UIImage, by scale: CGFloat)->UIImage {
+    private static func scaleImage(image: NSImage, by scale: CGFloat)->NSImage {
         if scale == 1 { return image }
         
-        let imageRef = image.cgImage!
-        let width = imageRef.width
-        let height = imageRef.height
+        let newSize = CGSize(width: image.size.width * scale, height: image.size.height * scale)
         
-        var bounds = CGSize(width: width, height: height)
+        let imageCopy = NSImage(size: newSize, flipped: false) { (rect) -> Bool in
+            image.draw(in: rect)
+            return true
+        }
         
-        bounds.width = CGFloat(width) * scale
-        bounds.height = CGFloat(height) * scale
-        
-        UIGraphicsBeginImageContext(bounds)
-        image.draw(in: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
-        let imageCopy = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return imageCopy ?? image
+        return imageCopy
     }
     
-    private static func makeBytes(from image: UIImage) -> [UInt8]? {
-        guard let cgImage = image.cgImage else {
+    private static func makeBytes(from image: NSImage) -> [UInt8]? {
+        guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
             return nil
         }
         if isCompatibleImage(cgImage) {
