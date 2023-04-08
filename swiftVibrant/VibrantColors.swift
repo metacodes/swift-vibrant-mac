@@ -1,12 +1,10 @@
 //
 //  VibrantColors.swift
-//  swift-vibrant-ios
 //
-//  Created by Bryce Dougherty on 5/3/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
-import UIKit
+import AppKit
 
 public typealias Vec3<T> = (T, T, T)
 public typealias RGB = (r: UInt8, g: UInt8, b: UInt8)
@@ -39,7 +37,7 @@ public class Swatch: Equatable {
 
     private var _hex: String?
     
-    private var _uiColor: UIColor?
+    private var _uiColor: NSColor?
 
     var r: UInt8 { self._rgb.r }
 
@@ -66,10 +64,10 @@ public class Swatch: Equatable {
     }
 
     
-    public var uiColor: UIColor {
+    public var uiColor: NSColor {
         if self._uiColor == nil {
             let rgb = self._rgb
-            self._uiColor = apply(rgbToUIColor, rgb)
+            self._uiColor = apply(rgbToNSColor, rgb)
         }
         return self._uiColor!
     }
@@ -109,29 +107,29 @@ public class Swatch: Equatable {
         return self._yiq!
     }
 
-    private var _titleTextColor: UIColor?
+    private var _titleTextColor: NSColor?
 
-    private var _bodyTextColor: UIColor?
+    private var _bodyTextColor: NSColor?
 
-    public var titleTextColor: UIColor {
+    public var titleTextColor: NSColor {
         if self._titleTextColor == nil {
             self._titleTextColor = self.getYiq() < 200 ? .white : .black
         }
         return self._titleTextColor!
     }
 
-    public var bodyTextColor: UIColor {
+    public var bodyTextColor: NSColor {
         if self._bodyTextColor == nil {
             self._bodyTextColor = self.getYiq() < 150 ? .white : .black
         }
         return self._bodyTextColor!
     }
 
-    public func getTitleTextColor()->UIColor {
+    public func getTitleTextColor()->NSColor {
         return self.titleTextColor
     }
 
-    public func getBodyTextColor()->UIColor {
+    public func getBodyTextColor()->NSColor {
         return self.bodyTextColor
     }
     
