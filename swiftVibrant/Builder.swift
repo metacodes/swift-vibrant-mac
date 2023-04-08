@@ -1,22 +1,20 @@
 //
 //  Builder.swift
-//  swift-vibrant-ios
+//  iPaste
 //
-//  Created by Bryce Dougherty on 5/3/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
-
-import UIKit
+import AppKit
 
 public typealias Callback<T> = (T)->Void
 
 public class Builder {
 
-    private var _src: UIImage
+    private var _src: NSImage
     private var _opts: Vibrant.Options
     
-    init(_ src: UIImage, _ opts: Vibrant.Options = Vibrant.Options()) {
+    init(_ src: NSImage, _ opts: Vibrant.Options = Vibrant.Options()) {
         self._src = src
         self._opts = opts
     }
