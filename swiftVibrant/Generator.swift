@@ -1,13 +1,11 @@
-
 //
-//  default.swift
-//  swift-vibrant
+//  Generator.swift
+//  iPaste
 //
-//  Created by Bryce Dougherty on 4/30/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
-import UIKit
+import AppKit
 
 public class Generator {
     
