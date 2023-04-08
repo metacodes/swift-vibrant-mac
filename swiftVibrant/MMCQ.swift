@@ -18,19 +18,7 @@
 //  https://github.com/SvenWoltmann/color-thief-java
 
 import Foundation
-import UIKit
-
-/// MMCQ (modified median cut quantization) algorithm from
-/// the Leptonica library (http://www.leptonica.com/).
-
-/// Get reduced-space color index for a pixel.
-///
-/// - Parameters:
-///   - red: the red value
-///   - green: the green value
-///   - blue: the blue value
-/// - Returns: the color index
-
+import AppKit
 
 public struct Color {
     public var r: UInt8
@@ -43,8 +31,8 @@ public struct Color {
         self.b = b
     }
     
-    public func makeUIColor() -> UIColor {
-        return UIColor(red: CGFloat(r) / CGFloat(255), green: CGFloat(g) / CGFloat(255), blue: CGFloat(b) / CGFloat(255), alpha: CGFloat(1))
+    public func makeNSColor() -> NSColor {
+        return NSColor(red: CGFloat(r) / CGFloat(255), green: CGFloat(g) / CGFloat(255), blue: CGFloat(b) / CGFloat(255), alpha: CGFloat(1))
     }
 }
 
