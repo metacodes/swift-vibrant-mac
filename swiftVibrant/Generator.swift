@@ -1,6 +1,5 @@
 //
 //  Generator.swift
-//  iPaste
 //
 //  Created by Felix Liu on 2023/4/8.
 //
