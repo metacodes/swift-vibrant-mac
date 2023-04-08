@@ -1,6 +1,6 @@
 # swift-vibrant
 
-Generate a color palette from a UIImage. 
+Generate a color palette from a NSImage. 
 
 Other color palette generators will only give you a list of the dominant colors in an image. Vibrant does much more. 
 
@@ -33,7 +33,7 @@ pod 'swift-vibrant'
 ```swift
 import swiftVibrant
 
-let image = UIImage(named: "name_of_image")
+let image = NSImage(named: "name_of_image")
 
 // Calling from a background thread
 Vibrant.from(image).getPalette({ palette in 
@@ -56,14 +56,14 @@ v.getPalette({ palette in
 ### `Vibrant`
 Main class of `swift-vibrant`.
 
-#### `Vibrant.from(src: UIImage): Builder`
+#### `Vibrant.from(src: NSImage): Builder`
 Make a `Builder` for an image. Returns a `Builder` instance.
 
-#### `constructor(src: UIImage, opts: Vibrant.Options)`
+#### `constructor(src: NSImage, opts: Vibrant.Options)`
 
 Name    |  Description
 ------- |  ---------------------------------------
-`image` |  Your UIImage instance
+`image` |  Your NSImage instance
 `opts`  |  Options (optional)
 
 
