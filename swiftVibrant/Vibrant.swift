@@ -1,13 +1,11 @@
 //
 //  Vibrant.swift
-//  swift-vibrant-ios
 //
-//  Created by Bryce Dougherty on 5/3/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
 import Foundation
-import UIKit
+import AppKit
 
 public class Vibrant {
     
@@ -27,17 +25,17 @@ public class Vibrant {
         fileprivate var combinedFilter: Filter?
     }
     
-    public static func from( _ src: UIImage)->Builder {
+    public static func from( _ src: NSImage)->Builder {
         return Builder(src)
     }
 
     var opts: Options
-    var src: UIImage
+    var src: NSImage
     
     private var _palette: Palette?
     public var palette: Palette? { _palette }
     
-    public init(src: UIImage, opts: Options?) {
+    public init(src: NSImage, opts: Options?) {
         self.src = src
         self.opts = opts ?? Options()
         self.opts.combinedFilter = Filter.combineFilters(filters: self.opts.filters)
