@@ -1,13 +1,12 @@
 //
-//  util.swift
-//  swift-vibrant
+//  ColorConverters.swift
+//  iPaste
 //
-//  Created by Bryce Dougherty on 4/30/20.
-//  Copyright © 2020 Bryce Dougherty. All rights reserved.
+//  Created by Felix Liu on 2023/4/8.
 //
 
 import Foundation
-import UIKit
+import AppKit
 
 
 struct DELTAE94_DIFF_STATUS {
@@ -27,7 +26,7 @@ struct newErr: Error {
     let message: String
 }
 
-public func uiColorToRgb(_ color: UIColor)->RGB {
+public func uiColorToRgb(_ color: NSColor)->RGB {
     var r: CGFloat = 0
     var g: CGFloat = 0
     var b: CGFloat = 0
@@ -35,18 +34,18 @@ public func uiColorToRgb(_ color: UIColor)->RGB {
     return (UInt8(r * 255), UInt8(g * 255), UInt8(b * 255))
 }
 
-public func rgbToUIColor(_ r: UInt8, _ g: UInt8, _ b: UInt8)->UIColor {
-    return UIColor.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: 1)
+public func rgbToNSColor(_ r: UInt8, _ g: UInt8, _ b: UInt8)->NSColor {
+    return NSColor.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: 1)
 }
-public func uiColorToHsl(_ color: UIColor)->HSL {
+public func uiColorToHsl(_ color: NSColor)->HSL {
     var h:CGFloat = 0
     var s:CGFloat = 0
     var l:CGFloat = 0
     color.getHue(&h, saturation: &s, brightness: &l, alpha: nil)
     return (Double(h),Double(s),Double(l))
 }
-public func hslToUIColor(_ h: Double, _ s: Double, _ l: Double)->UIColor {
-    return UIColor.init(hue: CGFloat(h), saturation: CGFloat(s), brightness: CGFloat(l), alpha: 1)
+public func hslToNSColor(_ h: Double, _ s: Double, _ l: Double)->NSColor {
+    return NSColor.init(hue: CGFloat(h), saturation: CGFloat(s), brightness: CGFloat(l), alpha: 1)
 }
 
 
